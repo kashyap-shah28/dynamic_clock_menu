@@ -38,3 +38,5 @@ The project is structured around FreeRTOS tasks to ensure efficient operation an
 - **Inter-task Communication**: Queues are used to pass data between tasks, such as sending time data from the RTC task to the display task.
 - **Task Synchronization**: Mutexes ensure that shared resources (like the display) are accessed safely.
 
+## Setup and Installation
+- Unzip the menu.zip file and run it in STM32CubeIDE. Use STM32F401RE Nucleo Board to run the code.
