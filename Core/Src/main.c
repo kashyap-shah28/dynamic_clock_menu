@@ -531,13 +531,17 @@ void StartKeyboardTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(key_detect_flag != 0)
-	      {
-
-	      	key_detect_flag = 0;
+	  
+	  if (xSemaphoreTake(rtcMutex, portMAX_DELAY) == pdTRUE) {
+                if(key_detect_flag != 0)
+		{key_detect_flag = 0;
 		handle_key_press(key_stored);
 
 	      }
+                xSemaphoreGive(rtcMutex);
+
+	  }
+	  
     osDelay(1);
   }
   /* USER CODE END StartKeyboardTask */
