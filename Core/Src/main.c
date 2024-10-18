@@ -509,7 +509,8 @@ void StartLCDTask(void const * argument)
   for(;;)
   {
 	  if (xQueueReceive(timeUpdateQueue, &receivedTime, portMAX_DELAY) == pdPASS) {
-		  handle_key_press(key_stored);
+		  page_functions[page_menu_id].page_fn();
+    
 		    }
 
     osDelay(0.5);
@@ -534,7 +535,7 @@ void StartKeyboardTask(void const * argument)
 	      {
 
 	      	key_detect_flag = 0;
-
+		handle_key_press(key_stored);
 
 	      }
     osDelay(1);
